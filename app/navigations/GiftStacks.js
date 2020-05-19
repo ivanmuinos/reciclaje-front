@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Icon, Header } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native';
+import {  Icon, Header } from 'react-native-elements';
+import { StyleSheet,TouchableOpacity } from 'react-native';
 import GiftScreen from '../screens/Gift/Gift';
 import GiftDetail from '../screens/Gift/GiftDetail';
 import GiftRedeemedOk from '../screens/Gift/GiftRedeemedOk';
@@ -13,9 +13,10 @@ const GiftScreenStacks = createStackNavigator({
         screen: GiftScreen,
         navigationOptions: ({ navigation }) => ({
             header: () => <Header 
+                                
+                                containerStyle={styles.headerContainer}
                                 leftComponent={() => renderMenuIcon(navigation)} 
-                                centerComponent={{ text: 'Reciclaje App', style: { color: '#fff' } }}
-                                rightComponent={() => renderAccountIcon()}
+                                centerComponent={{ text: '1200 Puntos', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
                           />,
         })
         
@@ -60,5 +61,17 @@ const renderMenuIcon = (navigation) => {
     )
 }
 
+const styles = StyleSheet.create({
+    headerContainer:{
+        shadowOffset: {
+            height: 1,
+            width: 1,
+        },
+        shadowOpacity: 0.5,
+        backgroundColor: "#49AD26"
+        
+    }
+    
+})
 
 export default GiftScreenStacks;

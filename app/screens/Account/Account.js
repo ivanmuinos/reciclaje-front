@@ -1,24 +1,111 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
-import { View, Text } from 'react-native';
-import Loading from '../../components/Loading';
-import UserGuest from './UserGuest';
-import UserLogged from  './UserLogged';
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
+import { List, ListItem, FlatList, Avatar, Divider } from 'react-native-elements';
 
-const typeUser = "normalUse";
 
 export default function Account() {
-    const [login, setLogin] = useState(null);
+    return (
+        <View style={styles.view}>
+            <View style={styles.avatarView}>
+                <Text style={styles.welcome}>Hola {user.name}!</Text>
+                <Avatar
+                    size="xlarge"
+                    source={{ uri: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" }}
+                    onPress={() => console.log("Works!")}
+                    activeOpacity={0.7}
+                    containerStyle={styles.avatar}
 
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
-            !user ? setLogin(false) : setLogin(true);
-        })
-    }, []);
+                />
 
-    if (login === null) {
-        return <Loading isVisible={true} text="Cargando..."/>
+                <Text style={styles.points}>{user.points} puntos</Text>
+            </View>
+
+
+            <View style={styles.list}>
+                {
+                    list.map((item, i) => (
+                        <TouchableOpacity key={i}>
+                            <ListItem
+                                key={i}
+                                title={item.title}
+                                leftIcon={{ name: item.icon }}
+                                bottomDivider
+                                chevron
+                            />
+                        </TouchableOpacity>
+                    ))
+                }
+            </View>
+        </View>
+
+    )
+}
+
+
+const user = {
+    name: 'Julieta',
+    points: '1500'
+
+}
+
+const list = [
+    {
+        title: 'Datos del perfil',
+        icon: 'settings'
+    },
+    {
+        title: 'Historial',
+        icon: 'sync'
+    },
+    {
+        title: 'Logros',
+        icon: 'school'
+    }
+]
+
+const styles = StyleSheet.create({
+    view: {
+
+
+    },
+    welcome: {
+        fontSize: 30,
+        marginTop: 20,
+        textAlign: "center",
+    },
+    points: {
+        marginBottom: 15,
+        fontSize: 20,
+        width: "100%",
+        textAlign: "center",
+        padding: 10,
+        color: "black",
+    },
+    avatarView: {
+        width: "100%",
+        alignItems: 'center',
+        backgroundColor: "white"
+    
+
+
+    },
+    avatar: {
+        marginTop: 15,
+        marginBottom: 15,
+
+    },
+    list: {
+        margin: 15,
+        marginTop: 20,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+
     }
 
-    return login ? <UserLogged /> : <UserGuest />;
-}
+
+})

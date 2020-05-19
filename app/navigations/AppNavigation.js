@@ -3,11 +3,13 @@ import React from 'react';
 import { Icon } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
+import { StyleSheet } from 'react-native';
 import HomeScreenStacks from './HomeStacks';
 import MapScreenStacks from './MapStacks';
 import QrScreenStacks from './QRStacks';
 import GiftScreenStacks from './GiftStacks';
+import AccountScreenStacks from './AccountStacks';
+
 
 const NavigationStacks = createBottomTabNavigator({
     Home:{
@@ -18,10 +20,13 @@ const NavigationStacks = createBottomTabNavigator({
                 <Icon
                     type="material-community"
                     name="home"
-                    size={22}
+                    size={20}
                     color={tintColor}
                 />
-            )
+            ),
+            tabBarOptions: {
+                activeTintColor: '#49AD26',
+            },
         })
     },
     Map:{
@@ -32,10 +37,13 @@ const NavigationStacks = createBottomTabNavigator({
                 <Icon
                 type="font-awesome"
                 name="map-marker"
-                size={22}
+                size={20}
                 color={tintColor}
             />
-            )
+            ),
+            tabBarOptions: {
+                activeTintColor: '#49AD26',
+            },
         })
     },
     Qr:{
@@ -46,10 +54,13 @@ const NavigationStacks = createBottomTabNavigator({
                 <Icon
                 type="font-awesome"
                 name="qrcode"
-                size={22}
+                size={20}
                 color={tintColor}
             />
-            )
+            ),
+            tabBarOptions: {
+                activeTintColor: '#49AD26',
+            },
         })
     },
     Gift:{
@@ -60,15 +71,36 @@ const NavigationStacks = createBottomTabNavigator({
                 <Icon
                 type="font-awesome"
                 name="gift"
-                size={22}
+                size={20}
                 color={tintColor}
             />
-            )
+            ),
+            tabBarOptions: {
+                activeTintColor: '#49AD26',
+            },
+        })
+    },
+    Account:{
+        screen: AccountScreenStacks,
+        navigationOptions: () => ({
+            tabBarLabel: "Mi Cuenta",
+            tabBarIcon: ({tintColor}) => (
+                <Icon
+                type="font-awesome"
+                name="user"
+                size={20}
+                color={tintColor}
+            />
+            ),
+            tabBarOptions: {
+                activeTintColor: '#49AD26',
+            },
         })
     },
 
 
 });
+
 
 export default createAppContainer(NavigationStacks);
 
