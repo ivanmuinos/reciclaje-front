@@ -44,7 +44,7 @@ export default function Account() {
 
 const user = {
     name: 'Julieta',
-    points: '1500'
+    points: '1200'
 
 }
 
