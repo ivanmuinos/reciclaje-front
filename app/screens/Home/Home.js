@@ -5,7 +5,9 @@ import { underline } from 'colorette';
 import { WebView } from "react-native-webview";
 const typeUser = "normalUse";
 
-export default function Home() {
+export default function Home(props) {
+    const { navigation } = props;
+    console.log(navigation);
     return (
         <ScrollView>
 
@@ -16,6 +18,7 @@ export default function Home() {
                 <Text style={styles.learningText}>Informacion</Text>
                 <View style={styles.containerIcons}>
                     <TouchableOpacity
+                        onPress={() => {navigation.navigate('Recycle', {})}}
                         style={styles.button}
                     >
                         <Icon
@@ -27,6 +30,7 @@ export default function Home() {
                         <Text style={styles.textButtonLearning}>Reciclaje</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => {navigation.navigate('GreenPoint', {})}}
                         style={styles.button}
                     >
                         <Icon
@@ -38,6 +42,7 @@ export default function Home() {
                         <Text style={styles.textButtonLearning}>Puntos Verdes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => {navigation.navigate('Enviroment', {})}}
                         style={styles.button}
                     >
                         <Icon
@@ -49,6 +54,7 @@ export default function Home() {
                         <Text style={styles.textButtonLearning}>Medio Ambiente</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => {navigation.navigate('Tips', {})}}
                         style={styles.button}
                     >
                         <Icon
@@ -60,6 +66,7 @@ export default function Home() {
                         <Text style={styles.textButtonLearning}>Tips</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => {navigation.navigate('RecycleProcess', {})}}
                         style={styles.button}
                     >
                         <Icon
@@ -86,7 +93,7 @@ const styles = StyleSheet.create({
     container: {
         borderRadius: 10,
         backgroundColor: "white",
-        margin: 10,
+        margin: 7,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     },
     containerIcons: {
         marginTop: 20,
-        paddingBottom: 15,
+        paddingBottom: 20,
         flex: 1,
         flexDirection: 'row',
         alignItems: "center",
@@ -123,12 +130,12 @@ const styles = StyleSheet.create({
 
     },
     button: {
-        marginLeft: 4,
         marginRight: 4,
+        marginLeft: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 60,
-        height: 60,
+        width: 70,
+        height: 70,
         backgroundColor: '#fff',
         borderRadius: 50,
         shadowColor: "#000",
