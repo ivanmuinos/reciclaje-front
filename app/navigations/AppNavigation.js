@@ -15,7 +15,7 @@ const NavigationStacks = createBottomTabNavigator({
     Home:{
         screen: HomeScreenStacks,
         navigationOptions: () => ({
-            tabBarLabel: "Inicio",
+            tabBarLabel: "Informacion",
             tabBarIcon: ({ tintColor }) => (
                 <Icon
                     type="material-community"

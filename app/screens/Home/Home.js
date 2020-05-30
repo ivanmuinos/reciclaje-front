@@ -24,7 +24,7 @@ export default function Home(props) {
                         <Icon
                             name="home"
                             type='font-awesome'
-                            size={25}
+                            size={50}
                             color="#45BD3D"
                         />
                         <Text style={styles.textButtonLearning}>Reciclaje</Text>
@@ -36,7 +36,7 @@ export default function Home(props) {
                         <Icon
                             name="map-marker"
                             type='font-awesome'
-                            size={25}
+                            size={50}
                             color="#45BD3D"
                         />
                         <Text style={styles.textButtonLearning}>Puntos Verdes</Text>
@@ -48,7 +48,7 @@ export default function Home(props) {
                         <Icon
                             name="globe"
                             type='font-awesome'
-                            size={25}
+                            size={50}
                             color="#45BD3D"
                         />
                         <Text style={styles.textButtonLearning}>Medio Ambiente</Text>
@@ -60,7 +60,7 @@ export default function Home(props) {
                         <Icon
                             name="info"
                             type='font-awesome'
-                            size={25}
+                            size={50}
                             color="#45BD3D"
                         />
                         <Text style={styles.textButtonLearning}>Tips</Text>
@@ -72,7 +72,7 @@ export default function Home(props) {
                         <Icon
                             name="truck"
                             type='font-awesome'
-                            size={25}
+                            size={50}
                             color="#45BD3D"
                         />
                         <Text style={styles.textButtonLearning}>Proceso Reciclado</Text>
@@ -130,14 +130,12 @@ const styles = StyleSheet.create({
 
     },
     button: {
-        marginRight: 4,
-        marginLeft: 4,
+        margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 70,
-        height: 70,
+        width: 150,
+        height: 150,
         backgroundColor: '#fff',
-        borderRadius: 50,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
