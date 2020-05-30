@@ -8,6 +8,7 @@ export default function Account() {
         <View style={styles.view}>
             <View style={styles.avatarView}>
                 <Text style={styles.welcome}>Hola {user.name}!</Text>
+                <Text>Te damos la bienvenida a Reciclapp</Text>
                 <Avatar
                     size="xlarge"
                     source={{ uri: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" }}

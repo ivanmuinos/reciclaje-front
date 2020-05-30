@@ -13,9 +13,7 @@ const GiftScreenStacks = createStackNavigator({
         screen: GiftScreen,
         navigationOptions: ({ navigation }) => ({
             header: () => <Header 
-                                
                                 containerStyle={styles.headerContainer}
-                                leftComponent={() => renderMenuIcon(navigation)} 
                                 centerComponent={{ text: '1200 Puntos', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
                           />,
         })
@@ -35,18 +33,6 @@ const GiftScreenStacks = createStackNavigator({
      }
 });
 
-const renderAccountIcon = () => {
-    return (
-        <TouchableOpacity onPress={ () => {console.log('Boton mi cuenta presionado')}}>
-                <Icon
-                    type="material-community"
-                    name="account"
-                    size={22}
-                    color="#fff"
-                />
-        </TouchableOpacity>
-    )
-}
 
 const renderMenuIcon = (navigation) => {
     return (
