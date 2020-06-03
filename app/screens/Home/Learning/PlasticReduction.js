@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
 import { Icon, Card, Button, Image } from 'react-native-elements';
 import { WebView } from "react-native-webview";
 import ImagePreview from 'react-native-image-preview';
@@ -8,6 +8,8 @@ export default function PlasticReduction(props) {
     const [visible, setVisibleToFalse] = useState(false);
     const [source, setSource] = useState("");
 
+    const dimensions = Dimensions.get('window');
+    const imageWidth = dimensions.width * 0.9;
 
     return (
         <ScrollView
@@ -21,7 +23,7 @@ export default function PlasticReduction(props) {
                     >
                         <Image
                             source={{uri: img_reciclable}}
-                            style={{ width: 390, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                     </TouchableOpacity>
                    
@@ -36,7 +38,7 @@ export default function PlasticReduction(props) {
                     >
                         <Image
                             source={{uri: img_basura}}
-                            style={{ width: 390, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                     </TouchableOpacity>
                    
@@ -51,7 +53,7 @@ export default function PlasticReduction(props) {
                     >
                         <Image
                             source={{uri: img_tips}}
-                            style={{ width: 370, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                     </TouchableOpacity>
                     

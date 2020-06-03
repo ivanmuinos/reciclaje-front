@@ -9,7 +9,6 @@ export default function Recycle(props) {
     const [source, setSource] = useState("");
 
     const dimensions = Dimensions.get('window');
-    const imageHeight = Math.round(dimensions.width * 9 / 16);
     const imageWidth = dimensions.width * 0.9;
 
      console.log(source);

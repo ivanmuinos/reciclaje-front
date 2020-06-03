@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
 import { Icon, Card, Button, Image } from 'react-native-elements';
 import { WebView } from "react-native-webview";
 import ImagePreview from 'react-native-image-preview';
@@ -7,6 +7,9 @@ import ImagePreview from 'react-native-image-preview';
 export default function Recycle(props) {
     const [visible, setVisibleToFalse] = useState(false);
 
+    const dimensions = Dimensions.get('window');
+    const imageWidth = dimensions.width * 0.45;
+    
     return (
         <ScrollView
             contentContainerStyle={{ backgroundColor: "#45BD3D" }}>
@@ -56,7 +59,7 @@ export default function Recycle(props) {
                     >
                         <Image
                             source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }}
-                            style={{ width: 185, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -64,7 +67,7 @@ export default function Recycle(props) {
                     >
                         <Image
                             source={require('../../../../assets/img/reciclar-1.jpeg')}
-                            style={{ width: 185, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                         <ImagePreview visible={visible} source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }} close={setVisibleToFalse} />
                     </TouchableOpacity>
