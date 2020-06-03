@@ -4,50 +4,53 @@ import { Icon, Card, Button, Image } from 'react-native-elements';
 import { WebView } from "react-native-webview";
 import ImagePreview from 'react-native-image-preview';
 
-export default function Recycle(props) {
+export default function PlasticReduction(props) {
     const [visible, setVisibleToFalse] = useState(false);
     const [source, setSource] = useState("");
 
-     console.log(source);
+
     return (
         <ScrollView
             contentContainerStyle={{ backgroundColor: "#45BD3D" }}>
-
-            <View style={styles.container}>
-                <Text style={styles.learningText}>¿Qué es un punto verde?</Text>
-                <View style={styles.containerInfo}>
-                    <WebView
-                        style={{ width: 400, height: 170 }}
-                        javaScriptEnabled={true}
-                        domStorageEnabled={true}
-                        source={{ uri: "https://www.youtube.com/embed/NVE1zh-DZ9A" }}
-                    />
-                </View>
-            </View>
            
             <View style={styles.container}>
-                <Text style={styles.learningText}>Punto verde</Text>
+                <Text style={styles.learningText}>¿Que es reciclable?</Text>
                 <View style={styles.containerInfo}>
                     <TouchableOpacity
-                        onPress={() => { setVisibleToFalse(true), setSource(punto_verde) }}
+                        onPress={() => { setVisibleToFalse(true), setSource(img_reciclable) }}
                     >
                         <Image
-                            source={{uri: punto_verde}}
+                            source={{uri: img_reciclable}}
                             style={{ width: 390, height: 170 }}
                         />
                     </TouchableOpacity>
                    
                 </View>
             </View>
-            
+
             <View style={styles.container}>
-                <Text style={styles.learningText}>Punto verde especial</Text>
+                <Text style={styles.learningText}>¿Qué es basura?</Text>
                 <View style={styles.containerInfo}>
-                <TouchableOpacity
-                        onPress={() => { setVisibleToFalse(true), setSource(punto_verde_especial) }}
+                    <TouchableOpacity
+                        onPress={() => { setVisibleToFalse(true), setSource(img_basura) }}
                     >
                         <Image
-                            source={{uri: punto_verde_especial}}
+                            source={{uri: img_basura}}
+                            style={{ width: 390, height: 170 }}
+                        />
+                    </TouchableOpacity>
+                   
+                </View>
+            </View>
+
+            <View style={styles.container}>
+                <Text style={styles.learningText}>10 tips para usar menos plástico</Text>
+                <View style={styles.containerInfo}>
+                <TouchableOpacity
+                        onPress={() => { setVisibleToFalse(true), setSource(img_tips) }}
+                    >
+                        <Image
+                            source={{uri: img_tips}}
                             style={{ width: 370, height: 170 }}
                         />
                     </TouchableOpacity>
@@ -60,8 +63,9 @@ export default function Recycle(props) {
     );
 }
 
-const punto_verde = 'https://i.ibb.co/6mj75BV/greenpoint-1.jpg'
-const punto_verde_especial = 'https://i.ibb.co/V38S9s5/greenpoint-2.jpg' 
+const img_tips = 'https://i.ibb.co/D9YJR1G/10tips.jpg';
+const img_basura = 'https://i.ibb.co/Vpt1fX6/Whats-App-Image-2020-06-02-at-20-42-40.jpg';
+const img_reciclable = 'https://i.ibb.co/C6XNvdB/Whats-App-Image-2020-06-02-at-20-42-23.jpg';
 
 const styles = StyleSheet.create({
     container: {

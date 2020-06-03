@@ -10,12 +10,7 @@ export default function Home(props) {
     console.log(navigation);
     return (
         <ScrollView>
-
-            <Text style={styles.hello}>Bienvenido a Reciclapp</Text>
-
-            <Text style={{ fontSize: 25, color: "gray", marginTop: 20, marginLeft: 10, }}>Antes de empezar...</Text>
             <View style={styles.container}>
-                <Text style={styles.learningText}>Informacion</Text>
                 <View style={styles.containerIcons}>
                     <TouchableOpacity
                         onPress={() => {navigation.navigate('Recycle', {})}}
@@ -27,7 +22,7 @@ export default function Home(props) {
                             size={50}
                             color="#45BD3D"
                         />
-                        <Text style={styles.textButtonLearning}>Reciclaje</Text>
+                        <Text style={styles.textButtonLearning}>Reciclaje en casa</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {navigation.navigate('GreenPoint', {})}}
@@ -54,16 +49,16 @@ export default function Home(props) {
                         <Text style={styles.textButtonLearning}>Medio Ambiente</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('Tips', {})}}
+                        onPress={() => {navigation.navigate('PlasticReduction', {})}}
                         style={styles.button}
                     >
                         <Icon
-                            name="info"
+                            name="recycle"
                             type='font-awesome'
                             size={50}
                             color="#45BD3D"
                         />
-                        <Text style={styles.textButtonLearning}>Tips</Text>
+                        <Text style={styles.textButtonLearning}>Reducción de plástico</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {navigation.navigate('RecycleProcess', {})}}
@@ -75,7 +70,7 @@ export default function Home(props) {
                             size={50}
                             color="#45BD3D"
                         />
-                        <Text style={styles.textButtonLearning}>Proceso Reciclado</Text>
+                        <Text style={styles.textButtonLearning}>Proceso de reciclado</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -91,23 +86,13 @@ const user = {
 
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 10,
-        backgroundColor: "white",
-        margin: 7,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.20,
-        shadowRadius: 1.41,
+      
+      
 
-        elevation: 2,
 
     },
     containerIcons: {
         marginTop: 20,
-        paddingBottom: 20,
         flex: 1,
         flexDirection: 'row',
         alignItems: "center",

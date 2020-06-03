@@ -50,6 +50,7 @@ export default function Recycle(props) {
                     />
                 </View>
                 <View style={styles.containerInfo}>
+                    
                     <TouchableOpacity
                         onPress={() => { setVisibleToFalse(true) }}
                     >
@@ -62,18 +63,32 @@ export default function Recycle(props) {
                         onPress={() => { setVisibleToFalse(true) }}
                     >
                         <Image
-                            source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }}
+                            source={require('../../../../assets/img/reciclar-1.jpeg')}
                             style={{ width: 185, height: 170 }}
                         />
+                        <ImagePreview visible={visible} source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }} close={setVisibleToFalse} />
                     </TouchableOpacity>
                 </View>
 
             </View>
-            <ImagePreview visible={visible} source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }} close={setVisibleToFalse} />
+            
 
         </ScrollView>
     );
 }
+
+const images = [
+    {
+        name: 'reciclar-1',
+        source: require('../../../../assets/img/reciclar-1.jpeg')
+    },
+    {
+        name: 'reciclar-2',
+        source: require('../../../../assets/img/reciclar-2.jpeg')
+    }
+
+
+]
 
 const styles = StyleSheet.create({
     container: {

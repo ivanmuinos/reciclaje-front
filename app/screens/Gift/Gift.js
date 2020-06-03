@@ -44,7 +44,6 @@ export default function Gift(props) {
                                             <Text style={styles.productTitle}>{det.name}</Text>
                                             <Text style={styles.points}> {det.points} Puntos</Text>
                                         </View>
-
                                     </Card>
                                 </TouchableOpacity>
                             </View>

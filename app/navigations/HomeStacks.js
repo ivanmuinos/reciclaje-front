@@ -12,7 +12,7 @@ import RecycleScreen from "../screens/Home/Learning/Recycle";
 import EnviromentScreen from "../screens/Home/Learning/Enviroment";
 import GreenPointScreen from "../screens/Home/Learning/GreenPoint";
 import RecycleProcessScreen from "../screens/Home/Learning/RecycleProcess";
-import TipsScreen from "../screens/Home/Learning/Tips";
+import PlasticReduction from "../screens/Home/Learning/PlasticReduction";
 
 const HomeScreenStacks = createStackNavigator({
     Home: {
@@ -48,10 +48,10 @@ const HomeScreenStacks = createStackNavigator({
             title: "Proceso de reciclaje"
         })
     },
-    Tips: {
-        screen: TipsScreen,
+    PlasticReduction: {
+        screen: PlasticReduction,
         navigationOptions: () => ({
-            title: "Tips"
+            title: "Reducción de plástico"
         })
     },
 
