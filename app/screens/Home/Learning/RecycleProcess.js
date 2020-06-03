@@ -17,6 +17,7 @@ export default function Enviroment(props) {
                         style={{ width: 400, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/iIwYnz7a2VE" }}
                     />
                 </View>
@@ -29,6 +30,7 @@ export default function Enviroment(props) {
                         style={{ width: 400, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/RQSpNiioUeA" }}
                     />
                 </View>

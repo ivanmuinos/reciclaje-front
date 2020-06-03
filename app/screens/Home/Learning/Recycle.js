@@ -21,6 +21,7 @@ export default function Recycle(props) {
                         style={{ width: 185, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/EAQSlu2NLEs" }}
                     />
                     <WebView
@@ -38,6 +39,7 @@ export default function Recycle(props) {
                         style={{ width: 400, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/iRMZttpiMto" }}
                     />
                 </View>
@@ -49,6 +51,7 @@ export default function Recycle(props) {
                         style={{ width: 400, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/EAQSlu2NLEs" }}
                     />
                 </View>
