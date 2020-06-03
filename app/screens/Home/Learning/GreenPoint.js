@@ -23,6 +23,7 @@ export default function Recycle(props) {
                         style={{ width: imageWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
+                        allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/NVE1zh-DZ9A" }}
                     />
                 </View>
