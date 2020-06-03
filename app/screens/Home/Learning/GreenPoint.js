@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
 import { Icon, Card, Button, Image } from 'react-native-elements';
 import { WebView } from "react-native-webview";
 import ImagePreview from 'react-native-image-preview';
@@ -7,6 +7,10 @@ import ImagePreview from 'react-native-image-preview';
 export default function Recycle(props) {
     const [visible, setVisibleToFalse] = useState(false);
     const [source, setSource] = useState("");
+
+    const dimensions = Dimensions.get('window');
+    const imageHeight = Math.round(dimensions.width * 9 / 16);
+    const imageWidth = dimensions.width * 0.9;
 
      console.log(source);
     return (
@@ -17,7 +21,7 @@ export default function Recycle(props) {
                 <Text style={styles.learningText}>¿Qué es un punto verde?</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 400, height: 170 }}
+                        style={{ width: imageWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         source={{ uri: "https://www.youtube.com/embed/NVE1zh-DZ9A" }}
@@ -33,7 +37,7 @@ export default function Recycle(props) {
                     >
                         <Image
                             source={{uri: punto_verde}}
-                            style={{ width: 390, height: 170 }}
+                            style={{ width: imageWidth, height: 170 }}
                         />
                     </TouchableOpacity>
                    
@@ -48,7 +52,7 @@ export default function Recycle(props) {
                     >
                         <Image
                             source={{uri: punto_verde_especial}}
-                            style={{ width: 370, height: 170 }}
+                            style={{ width: imageWidth, height: 180 }}
                         />
                     </TouchableOpacity>
                     

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, ScrollView, View, Text } from 'react-native';
-import { Icon, Card, Button } from 'react-native-elements';
+import { Image, Icon, Card, Button } from 'react-native-elements';
 import { underline } from 'colorette';
 import { WebView } from "react-native-webview";
 const typeUser = "normalUse";
@@ -16,11 +16,9 @@ export default function Home(props) {
                         onPress={() => {navigation.navigate('Recycle', {})}}
                         style={styles.button}
                     >
-                        <Icon
-                            name="home"
-                            type='font-awesome'
-                            size={50}
-                            color="#45BD3D"
+                          <Image
+                            source={require('../../../assets/img/reciclaje-icon.png')}
+                            style={{ width: 100, height: 100 }}
                         />
                         <Text style={styles.textButtonLearning}>Reciclaje en casa</Text>
                     </TouchableOpacity>
