@@ -7,7 +7,7 @@ import { useNavigation, useNavigationParam } from '@react-navigation/native';
 export default function Gift(props) {
     const { navigation } = props;
     const [search, updateSearch] = useState("");
-
+    
     return (
 
         <ScrollView>

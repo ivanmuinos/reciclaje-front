@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
-import { Image, Icon, Card, Button } from 'react-native-elements';
+import { Image, Icon, Card, Button, Overlay } from 'react-native-elements';
 
 import { underline } from 'colorette';
 import { WebView } from "react-native-webview";

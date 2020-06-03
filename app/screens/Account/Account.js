@@ -1,24 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
-import { List, ListItem, FlatList, Avatar, Divider } from 'react-native-elements';
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { List, ListItem, FlatList, Avatar, Divider, Overlay } from 'react-native-elements';
+import ModalPointsLvl from './ModalPointsLvl';
 
+
+const dimensions = Dimensions.get('window');
+const overlayHeight = Math.round(dimensions.width * 24  / 16);
+const overlayWidth = dimensions.width * 0.8;
 
 export default function Account() {
+
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+
     return (
         <View style={styles.view}>
             <View style={styles.avatarView}>
                 <Text style={styles.welcome}>Hola {user.name}!</Text>
-                <Text>Te damos la bienvenida a Reciclapp</Text>
-                <Avatar
-                    size="xlarge"
-                    source={{ uri: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" }}
-                    onPress={() => console.log("Works!")}
-                    activeOpacity={0.7}
-                    containerStyle={styles.avatar}
+                <Text>Te damos la bienvenida a Grow</Text>
+                
+                <Text style={{fontSize: 20, margin: 15, fontWeight: 'bold', color:"gray"}}>Nivel: Árbol</Text>
+                <TouchableOpacity
+                    style={styles.pointsContainer}
+                    onPress={toggleOverlay}
+                >
+                    {renderPoints(user.points)}
+                    <Text style={styles.points}>{user.points} Hojas</Text>
+                </TouchableOpacity>
 
-                />
-
-                <Text style={styles.points}>{user.points} puntos</Text>
+                <Overlay 
+                    isVisible={visible} 
+                    onBackdropPress={toggleOverlay}
+                    overlayStyle={{width: overlayWidth, height: overlayHeight, backgroundColor: "#f2f2f2", borderRadius: 10}}
+                
+                >
+                    <ModalPointsLvl/>
+                </Overlay>
+                <Text style={{fontSize: 15, fontWeight: 'bold', color:"gray", margin: 10}} >Siguiente nivel: Bosque</Text>
             </View>
 
 
@@ -43,9 +64,32 @@ export default function Account() {
 }
 
 
+function renderPoints(points) {
+    if (points < 500) return (<Image source={require('../../../assets/img/brote-icon.png')}
+        resizeMode="cover"
+        style={{ width: 70, height: 70 }}
+    />
+    );
+    if (points > 500 && points < 1000) return (<Image source={require('../../../assets/img/arbusto-icon.png')}
+        resizeMode="cover"
+        style={{ width: 70, height: 70 }}
+    />
+    );
+    if (points > 1000 && points < 2000) return (<Image source={require('../../../assets/img/arbol-icon.png')}
+        resizeMode="cover"
+        style={{ width: 70, height: 70 }}
+    />
+    );
+    if (points > 2000) return (<Image source={require('../../../assets/img/bosque-icon.png')}
+        resizeMode="cover"
+        style={{ width: 70, height: 70 }}
+    />
+    );
+}
+
 const user = {
     name: 'Julieta',
-    points: '1200'
+    points: '1500'
 
 }
 
@@ -65,8 +109,23 @@ const list = [
 ]
 
 const styles = StyleSheet.create({
-    view: {
-
+    pointsContainer: {
+        flex: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: "white",
+        padding: 10,
+        borderRadius: 100,
+        height: 150,
+        width: 150,
+        marginBottom: 10,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 1,
 
     },
     welcome: {
@@ -76,7 +135,7 @@ const styles = StyleSheet.create({
     },
     points: {
         marginBottom: 15,
-        fontSize: 20,
+        fontSize: 17,
         width: "100%",
         textAlign: "center",
         padding: 10,
@@ -85,8 +144,8 @@ const styles = StyleSheet.create({
     avatarView: {
         width: "100%",
         alignItems: 'center',
-        backgroundColor: "white"
-    
+        backgroundColor: "white",
+
 
 
     },
