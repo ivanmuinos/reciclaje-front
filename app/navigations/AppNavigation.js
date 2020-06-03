@@ -18,8 +18,8 @@ const NavigationStacks = createBottomTabNavigator({
             tabBarLabel: "Informacion",
             tabBarIcon: ({ tintColor }) => (
                 <Icon
-                    type="material-community"
-                    name="home"
+                    type="font-awesome"
+                    name="info"
                     size={20}
                     color={tintColor}
                 />
