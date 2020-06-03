@@ -24,7 +24,7 @@ export default function GiftRedeemedOk({ navigation, route }) {
             <Text style={{fontSize: 15, marginTop: 5, color: "gray" }}>{name}</Text>
             <Text style={{fontSize: 15, marginTop: 5, color: "gray"}}>{description}</Text>
         </View>
-            <Text style={{fontSize: 30, textAlign: "center", marginTop: 30}}>Te quedan: {result} puntos</Text>
+            <Text style={{fontSize: 30, textAlign: "center", marginTop: 30}}>Te quedan: {result} hojas</Text>
         </View>
     )
 }

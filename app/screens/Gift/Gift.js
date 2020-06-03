@@ -42,7 +42,7 @@ export default function Gift(props) {
                                                 style={{ width: "100%", height: 120 }}
                                             />
                                             <Text style={styles.productTitle}>{det.name}</Text>
-                                            <Text style={styles.points}> {det.points} Puntos</Text>
+                                            <Text style={styles.points}> {det.points} Hojas</Text>
                                         </View>
                                     </Card>
                                 </TouchableOpacity>

@@ -19,7 +19,7 @@ export default function GiftDetail({ navigation, route }) {
             <View style={styles.detailContainer}>
                 <Text style={styles.change}>0 canjeados</Text>
                 <Text style={styles.title}>{name}</Text>
-                <Text style={styles.points}>{points} Puntos</Text>
+                <Text style={styles.points}>{points} Hojas</Text>
                 <View style={styles.descriptionContainer}>
                     <Text style={{fontSize: 18, color: "gray"}}>Descripción del producto: </Text>
                     <Text style={{fontSize: 15, marginTop: 5}}>{description}</Text>

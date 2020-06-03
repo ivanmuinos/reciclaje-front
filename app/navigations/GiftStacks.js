@@ -14,7 +14,7 @@ const GiftScreenStacks = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             header: () => <Header 
                                 containerStyle={styles.headerContainer}
-                                centerComponent={{ text: '1200 Puntos', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
+                                centerComponent={{ text: '1500 Hojas', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
                           />,
         })
         
