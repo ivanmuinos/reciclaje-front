@@ -130,7 +130,7 @@ const detail = [
         name: 'Semillas Orgánicas',
         description: 'Ejemplo de descripción del producto',
         points: '500',
-        image: require('../../../assets/img/10-premios-semillasorganicas.jpg')
+        image: require('../../../assets/img/10-premios-semillasorganicas.png')
     },
     {
         name: 'Pulsera metálica reciclada',
@@ -142,13 +142,13 @@ const detail = [
         name: 'Lampara reciclada',
         description: 'Ejemplo de descripción del producto',
         points: '250',
-        image: require('../../../assets/img/16-premios-reci.jpg'),
+        image: require('../../../assets/img/16-premios-reci.png'),
     },	
     {
         name: 'Lapicero reciclado',
         description: 'Ejemplo de descripción del producto',
         points: '100',
-        image: require('../../../assets/img/14-premios-lapicero.jpg'),
+        image: require('../../../assets/img/14-premios-lapicero.png'),
     },
 
 ]
