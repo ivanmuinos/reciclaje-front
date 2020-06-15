@@ -6,9 +6,11 @@ import ImagePreview from 'react-native-image-preview';
 
 export default function Recycle(props) {
     const [visible, setVisibleToFalse] = useState(false);
+    const [source, setSource] = useState("");
 
     const dimensions = Dimensions.get('window');
     const imageWidth = dimensions.width * 0.45;
+    const videoWidth = dimensions.width * 0.9;
     
     return (
         <ScrollView
@@ -18,25 +20,30 @@ export default function Recycle(props) {
                 <Text style={styles.learningText}>¿Cómo empezar a separar basura?</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 185, height: 170 }}
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         allowsFullscreenVideo={true}
                         source={{ uri: "https://www.youtube.com/embed/EAQSlu2NLEs" }}
                     />
-                    <WebView
-                        style={{ width: 185, height: 170 }}
+                   
+                </View>
+                <View style={styles.containerInfo}>
+                     <WebView
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         source={{ uri: "https://www.youtube.com/embed/8dA5Bb59b1w" }}
                     />
+                   
                 </View>
+                
             </View>
             <View style={styles.container}>
                 <Text style={styles.learningText}>¿Qué es reciclar?</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 400, height: 170 }}
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         allowsFullscreenVideo={true}
@@ -48,7 +55,7 @@ export default function Recycle(props) {
                 <Text style={styles.learningText}>¿Por qué separar los residuos?</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 400, height: 170 }}
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         allowsFullscreenVideo={true}
@@ -58,11 +65,11 @@ export default function Recycle(props) {
                 <View style={styles.containerInfo}>
                     
                     <TouchableOpacity
-                        onPress={() => { setVisibleToFalse(true) }}
+                        onPress={() => { setVisibleToFalse(true), setSource(punto_verde) }}
                     >
                         <Image
                             source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }}
-                            style={{ width: imageWidth, height: 170 }}
+                            style={{ width: 170, height: 170 }}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -70,7 +77,7 @@ export default function Recycle(props) {
                     >
                         <Image
                             source={require('../../../../assets/img/reciclar-1.jpeg')}
-                            style={{ width: imageWidth, height: 170 }}
+                            style={{ width: imageWidth, height: imageWidth }}
                         />
                         <ImagePreview visible={visible} source={{ uri: 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium' }} close={setVisibleToFalse} />
                     </TouchableOpacity>
@@ -83,18 +90,7 @@ export default function Recycle(props) {
     );
 }
 
-const images = [
-    {
-        name: 'reciclar-1',
-        source: require('../../../../assets/img/reciclar-1.jpeg')
-    },
-    {
-        name: 'reciclar-2',
-        source: require('../../../../assets/img/reciclar-2.jpeg')
-    }
-
-
-]
+const reciclables_basura = 'https://pbs.twimg.com/media/BBuUOj6CIAA1RBt?format=jpg&name=medium';
 
 const styles = StyleSheet.create({
     container: {

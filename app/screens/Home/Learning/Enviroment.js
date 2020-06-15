@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
 import { Icon, Card, Button, Image } from 'react-native-elements';
 import { WebView } from "react-native-webview";
 
 export default function Enviroment(props) {
 
- 
+    const dimensions = Dimensions.get('window');
+    const videoWidth = dimensions.width * 0.9;
+
     return (
         <ScrollView
             contentContainerStyle={{ backgroundColor: "#45BD3D" }}>
@@ -14,7 +16,7 @@ export default function Enviroment(props) {
                 <Text style={styles.learningText}>Colaborando con el medio ambiente</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 400, height: 170 }}
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         allowsFullscreenVideo={true}
@@ -27,7 +29,7 @@ export default function Enviroment(props) {
                 <Text style={styles.learningText}>¿Qué es el consumo responsable?</Text>
                 <View style={styles.containerInfo}>
                     <WebView
-                        style={{ width: 400, height: 170 }}
+                        style={{ width: videoWidth, height: 170 }}
                         javaScriptEnabled={true}
                         domStorageEnabled={true}
                         allowsFullscreenVideo={true}
