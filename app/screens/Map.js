@@ -16,21 +16,32 @@ export default function Map() {
         longitude: -58.46839172,
         latitudeDelta: 0.05,
         longitudeDelta: 0.03
+        
     };
 
     let markers = [
         {
             title: "Plaza Castelli",
             description: "Punto Verde",
-            status: takeAwayCheck,
-            image: require('../../assets/img/icon-map-take-away.png'),
+            status: greenPointCheck,
+            image: require('../../assets/img/icon-map-green-point.png'),
             latlng: {
                 latitude: -34.56722639,
                 longitude: -58.46530947,
             }
         },
         {
-            title: "Plaza armenia",
+            title: "Plaza Leandro N. Alem",
+            description: "Punto Verde",
+            status: greenPointCheck,
+            image: require('../../assets/img/icon-map-green-point.png'),
+            latlng: {
+                latitude: -34.57631328,
+                longitude: -58.50388387,
+            }
+        },
+        {
+            title: "Plaza Balcarce",
             description: "Punto Verde",
             status: greenPointCheck,
             image: require('../../assets/img/icon-map-green-point.png'),
@@ -39,6 +50,47 @@ export default function Map() {
                 longitude: -58.46839172,
             }
         },
+        {
+            title: "Plaza Armenia",
+            description: "Punto Verde",
+            status: greenPointCheck,
+            image: require('../../assets/img/icon-map-green-point.png'),
+            latlng: {
+                latitude: -34.58921874,
+                longitude: -58.42494508,
+            }
+        },
+        {
+            title: "Ejemplo Take Away",
+            description: "Take-Away",
+            status: takeAwayCheck,
+            image: require('../../assets/img/icon-map-take-away.png'),
+            latlng: {
+                latitude: -34.54708679,
+                longitude: -58.45839172,
+            }
+        },
+        {
+            title: "Ejemplo Take Away",
+            description: "Take-Away",
+            status: takeAwayCheck,
+            image: require('../../assets/img/icon-map-take-away.png'),
+            latlng: {
+                latitude: -34.54708679,
+                longitude: -58.47839172,
+            }
+        },
+        {
+            title: "Ejemplo Take Away",
+            description: "Take-Away",
+            status: takeAwayCheck,
+            image: require('../../assets/img/icon-map-take-away.png'),
+            latlng: {
+                latitude: -34.54708679,
+                longitude: -58.48839172,
+            }
+        },
+ 
 
     ]
 
@@ -89,8 +141,11 @@ export default function Map() {
                     style={styles.mapStyle}
                     region={mapRegion}
                     provider={PROVIDER_GOOGLE}
+                    showsUserLocation={true}
+                    
 
-                >
+                >   
+
                     {markers.filter(marker => marker.status === true).map((marker, i) => (
                         <Marker
                             coordinate={marker.latlng}

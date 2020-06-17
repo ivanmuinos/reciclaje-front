@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Alert } from 'rea
 import { Input, Button } from 'react-native-elements';
 import TimePicker from "react-native-24h-timepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment';
 
 export default function GreenPointUpload2() {
 
@@ -30,14 +31,7 @@ export default function GreenPointUpload2() {
         <View>
             <View style={styles.inputContainer}>
                 <Input
-                    placeholder='Nombre de tu local'
-                    placeholderTextColor={'#49AD26'}
-                    inputContainerStyle={styles.inputContainerStyle}
-                    inputStyle={styles.inputStyle}
-                    onChangeText={(text) => console.log(text)}
-                />
-                <Input
-                    placeholder='Take-away de...'
+                    placeholder='Nombre del punto verde'
                     placeholderTextColor={'#49AD26'}
                     inputContainerStyle={styles.inputContainerStyle}
                     inputStyle={styles.inputStyle}
@@ -97,7 +91,7 @@ export default function GreenPointUpload2() {
 const styles = StyleSheet.create({
     inputContainer: {
         margin: 10,
-        height: Dimensions.get('window').height * 0.35
+        height: Dimensions.get('window').height * 0.3
     },
     inputContainerStyle: {
         marginTop: 7,
@@ -148,7 +142,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         backgroundColor: "white",
-        height: Dimensions.get('window').height * 0.6,
+        height: Dimensions.get('window').height * 0.7,
         alignItems: "center",
     },
     buttonStyle: {

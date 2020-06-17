@@ -119,7 +119,7 @@ const list = [
     {
         title: 'Cargar Take Away',
         icon: 'store',
-        screen: 'GreenPointUpload1',
+        screen: 'TakeAwayUpload1',
     }
 ]
 
