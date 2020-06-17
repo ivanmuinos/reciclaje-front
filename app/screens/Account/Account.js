@@ -8,7 +8,8 @@ const dimensions = Dimensions.get('window');
 const overlayHeight = Math.round(dimensions.width * 24  / 16);
 const overlayWidth = dimensions.width * 0.8;
 
-export default function Account() {
+export default function Account(props) {
+    const { navigation } = props;
 
     const [visible, setVisible] = useState(false);
 
@@ -53,6 +54,7 @@ export default function Account() {
                                 leftIcon={{ name: item.icon }}
                                 bottomDivider
                                 chevron
+                                onPress={() => navigation.navigate(item.screen)}
                             />
                         </TouchableOpacity>
                     ))
@@ -96,15 +98,28 @@ const user = {
 const list = [
     {
         title: 'Datos del perfil',
-        icon: 'settings'
+        icon: 'settings',
+        screen: 'GreenPointUpload1',
     },
     {
         title: 'Historial',
-        icon: 'sync'
+        icon: 'sync',
+        screen: 'GreenPointUpload1',
     },
     {
         title: 'Logros',
-        icon: 'school'
+        icon: 'school',
+        screen: 'GreenPointUpload1',
+    },
+    {
+        title: 'Cargar Punto Verde',
+        icon: 'room',
+        screen: 'GreenPointUpload1',
+    },
+    {
+        title: 'Cargar Take Away',
+        icon: 'store',
+        screen: 'GreenPointUpload1',
     }
 ]
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { CheckBox, Image } from 'react-native-elements'
+import { CheckBox, Image, Icon } from 'react-native-elements'
 import { green } from 'color-name';
 import _ from 'lodash';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Map() {
 
     const [greenPointCheck, setGreenPointCheck] = useState(true);
     const [takeAwayCheck, setTakeAwayCheck] = useState(true);
-
 
     const mapRegion = {
         latitude: -34.54708679,
@@ -22,8 +22,8 @@ export default function Map() {
         {
             title: "Plaza Castelli",
             description: "Punto Verde",
-            status: greenPointCheck,
-            image: require('../../assets/img/icon-take-away.png'),
+            status: takeAwayCheck,
+            image: require('../../assets/img/icon-map-take-away.png'),
             latlng: {
                 latitude: -34.56722639,
                 longitude: -58.46530947,
@@ -32,8 +32,8 @@ export default function Map() {
         {
             title: "Plaza armenia",
             description: "Punto Verde",
-            status: takeAwayCheck,
-            image: require('../../assets/img/icon-take-away.png'),
+            status: greenPointCheck,
+            image: require('../../assets/img/icon-map-green-point.png'),
             latlng: {
                 latitude: -34.54708679,
                 longitude: -58.46839172,
@@ -46,19 +46,43 @@ export default function Map() {
     console.log(markers);
 
     return (
-
         <View>
             <View style={styles.checkboxContainer}>
-                <CheckBox
-                    title='Puntos verdes'
-                    checked={greenPointCheck}
-                    onPress={() => checkGreenPoint()}
-                />
-                <CheckBox
-                    title='Take away'
-                    checked={takeAwayCheck}
-                    onPress={() => { setTakeAwayCheck(!takeAwayCheck) }}
-                />
+                <View style={styles.containerFilterButtons}>
+                    <TouchableOpacity
+                        onPress={() => { setGreenPointCheck(!greenPointCheck) }}
+                        style={styles.filterButton}
+                    >
+                        {
+                            greenPointCheck ? <Image
+                                source={require('../../assets/img/button-checked-greenpoint.png')}
+                                style={{ width: 50, height: 50 }}
+                            /> : <Image
+                                    source={require('../../assets/img/button-unchecked-greenpoint.png')}
+                                    style={{ width: 50, height: 50 }}
+                                />
+                        }
+                    </TouchableOpacity>
+                    <Text>Puntos Verdes</Text>
+                </View>
+                <View style={styles.containerFilterButtons}>
+                    <TouchableOpacity
+                        style={styles.filterButton}
+                        onPress={() => { setTakeAwayCheck(!takeAwayCheck) }}
+                    >
+                          {
+                            takeAwayCheck ? <Image
+                                source={require('../../assets/img/button-checked-takeaway.png')}
+                                style={{ width: 50, height: 50 }}
+                            /> : <Image
+                                    source={require('../../assets/img/button-unchecked-takeaway.png')}
+                                    style={{ width: 50, height: 50 }}
+                                />
+                        }
+                    </TouchableOpacity>
+                    <Text>Take-Away</Text>
+                </View>
+
             </View>
             <View>
                 <MapView
@@ -72,10 +96,10 @@ export default function Map() {
                             coordinate={marker.latlng}
                             title={marker.title}
                             description={marker.description}
-                            key={i} 
+                            key={i}
                             image={marker.image}
-                            >
-                            
+                        >
+
                         </Marker>
                     ))}
 
@@ -108,6 +132,33 @@ const styles = StyleSheet.create({
     },
     checkboxContainer: {
         flexDirection: 'row',
-
+        backgroundColor: "white",
+        margin: 10,
+        padding: 10,
+        width: "55%",
+        borderRadius: 10,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+    },
+    containerFilterButtons: {
+        marginRight: 5,
+        marginLeft: 5,
+        alignItems: "center",
+        alignContent: "center",
+        justifyContent: "center",
+    },
+    filterButton: {
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     }
 });
