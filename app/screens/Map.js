@@ -16,7 +16,7 @@ export default function Map() {
         longitude: -58.46839172,
         latitudeDelta: 0.05,
         longitudeDelta: 0.03
-        
+
     };
 
     let markers = [
@@ -61,7 +61,7 @@ export default function Map() {
             }
         },
         {
-            title: "Ejemplo Take Away",
+            title: "Rotisería",
             description: "Take-Away",
             status: takeAwayCheck,
             image: require('../../assets/img/icon-map-take-away.png'),
@@ -71,7 +71,7 @@ export default function Map() {
             }
         },
         {
-            title: "Ejemplo Take Away",
+            title: "Comida al peso",
             description: "Take-Away",
             status: takeAwayCheck,
             image: require('../../assets/img/icon-map-take-away.png'),
@@ -81,7 +81,7 @@ export default function Map() {
             }
         },
         {
-            title: "Ejemplo Take Away",
+            title: "Comida casera para llevar",
             description: "Take-Away",
             status: takeAwayCheck,
             image: require('../../assets/img/icon-map-take-away.png'),
@@ -90,7 +90,7 @@ export default function Map() {
                 longitude: -58.48839172,
             }
         },
- 
+
 
     ]
 
@@ -142,9 +142,9 @@ export default function Map() {
                     region={mapRegion}
                     provider={PROVIDER_GOOGLE}
                     showsUserLocation={true}
-                    
 
-                >   
+
+                >
 
                     {markers.filter(marker => marker.status === true).map((marker, i) => (
                         <Marker
