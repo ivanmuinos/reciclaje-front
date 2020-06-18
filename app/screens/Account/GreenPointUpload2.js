@@ -77,7 +77,7 @@ export default function GreenPointUpload2() {
             <View style={styles.footer}>
                 <Button
                     title="Cargar"
-                    onPress={() => Alert.alert("TODO integrar backend")}
+                    onPress={() => Alert.alert("Pendiente de verificación")}
                     buttonStyle={styles.buttonStyle}
                     containerStyle={styles.buttonContainerStyle}
                     titleStyle={styles.buttonTitleStyle}
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         height: 50,
         backgroundColor: "white",
         borderBottomColor: "white",
-        
+
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
