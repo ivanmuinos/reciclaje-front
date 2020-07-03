@@ -51,7 +51,7 @@ export default function TakeAwayUpload2() {
                     inputStyle={styles.inputStyle}
                     onChangeText={(text) => console.log(text)}
                 />
-                <View style={styles.timeContainer}>
+               {/*  <View style={styles.timeContainer}>
                     <TouchableOpacity onPress={showStartTimePicker}>
                         <Text
                             placeholder="HH:mm"
@@ -78,7 +78,7 @@ export default function TakeAwayUpload2() {
                         onConfirm={handleEndTimeConfirm}
                         onCancel={hideEndTimePicker}
                     />
-                </View>
+                </View> */}
             </View>
 
             <View style={styles.footer}>
@@ -98,7 +98,7 @@ export default function TakeAwayUpload2() {
 const styles = StyleSheet.create({
     inputContainer: {
         margin: 10,
-        height: Dimensions.get('window').height * 0.35
+        height: Dimensions.get('window').height * 0.28
     },
     inputContainerStyle: {
         marginTop: 7,

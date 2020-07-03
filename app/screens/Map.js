@@ -142,8 +142,8 @@ export default function Map() {
                     region={mapRegion}
                     provider={PROVIDER_GOOGLE}
                     showsUserLocation={true}
-                    
-
+                    zoomEnabled = {true}
+                        
                 >   
 
                     {markers.filter(marker => marker.status === true).map((marker, i) => (

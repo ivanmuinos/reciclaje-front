@@ -44,7 +44,7 @@ export default function GreenPointUpload2() {
                     inputStyle={styles.inputStyle}
                     onChangeText={(text) => console.log(text)}
                 />
-                <View style={styles.timeContainer}>
+                 <View style={styles.timeContainer}>
                     <TouchableOpacity onPress={showStartTimePicker}>
                         <Text
                             placeholder="HH:mm"
@@ -66,12 +66,13 @@ export default function GreenPointUpload2() {
                     <DateTimePickerModal
                         isVisible={isEndTimePickerVisible}
                         mode="time"
+                        is24Hour={true}
                         locale="en_GB"
                         date={new Date()}
                         onConfirm={handleEndTimeConfirm}
                         onCancel={hideEndTimePicker}
                     />
-                </View>
+                </View> 
             </View>
 
             <View style={styles.footer}>
