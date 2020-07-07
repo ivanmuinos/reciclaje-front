@@ -4,7 +4,14 @@ import Register from '../screens/Account/Register';
 
 const AuthNavigation = createStackNavigator(
     {
-        Login: { screen: Login },
+        Login: { 
+            screen: Login,
+            navigationOptions: () => ({
+                cardStyle:{
+                    backgroundColor: "white",
+                }
+            })
+        },
         Register: { screen: Register }
     },
     {

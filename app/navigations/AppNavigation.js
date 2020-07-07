@@ -1,99 +1,99 @@
 import React from 'react';
 
-import { Icon } from 'react-native-elements';
+import { Icon, Image } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { StyleSheet } from 'react-native';
+import { StyleSheet  } from 'react-native';
 import HomeScreenStacks from './HomeStacks';
 import MapScreenStacks from './MapStacks';
 import QrScreenStacks from './QRStacks';
 import GiftScreenStacks from './GiftStacks';
 import AccountScreenStacks from './AccountStacks';
 
+const width = 35;
+const height = 35;
 
 const NavigationStacks = createBottomTabNavigator({
-    Home:{
+    Home: {
         screen: HomeScreenStacks,
         navigationOptions: () => ({
-            tabBarLabel: "Informacion",
+            tabBarLabel: "Información",
             tabBarIcon: ({ tintColor }) => (
-                <Icon
-                    type="font-awesome"
-                    name="info"
-                    size={20}
-                    color={tintColor}
+                <Image
+                    source={require('../../assets/img/navbar/info-icon.png')}
+                    style={{ width: width, height: height, tintColor: tintColor }}
                 />
             ),
             tabBarOptions: {
                 activeTintColor: '#49AD26',
+                style: styles.navbar,
+
             },
         })
     },
-    Map:{
+    Map: {
         screen: MapScreenStacks,
         navigationOptions: () => ({
             tabBarLabel: "Puntos Verdes",
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                type="font-awesome"
-                name="map-marker"
-                size={20}
-                color={tintColor}
-            />
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    source={require('../../assets/img/navbar/point-icon.png')}
+                    style={{ width: width, height: height, tintColor: tintColor }}
+                />
             ),
             tabBarOptions: {
                 activeTintColor: '#49AD26',
+                style: styles.navbar,
             },
         })
     },
-    Qr:{
+    Qr: {
         screen: QrScreenStacks,
         navigationOptions: () => ({
             tabBarLabel: "QR",
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                type="font-awesome"
-                name="qrcode"
-                size={20}
-                color={tintColor}
-            />
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    source={require('../../assets/img/navbar/qr-icon.png')}
+                    style={{ width: width, height: height, tintColor: tintColor }}
+                />
             ),
             tabBarOptions: {
                 activeTintColor: '#49AD26',
+                style: styles.navbar,
             },
         })
     },
-    Gift:{
+    Gift: {
         screen: GiftScreenStacks,
         navigationOptions: () => ({
             tabBarLabel: "Premios",
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                type="font-awesome"
-                name="gift"
-                size={20}
-                color={tintColor}
-            />
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    source={require('../../assets/img/navbar/gift-icon.png')}
+                    style={{ width: width, height: height, tintColor: tintColor }}
+                />
             ),
             tabBarOptions: {
                 activeTintColor: '#49AD26',
+                style: {
+                    height: 60,
+                }
             },
         })
     },
-    Account:{
+    Account: {
         screen: AccountScreenStacks,
         navigationOptions: () => ({
             tabBarLabel: "Mi Cuenta",
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                type="font-awesome"
-                name="user"
-                size={20}
-                color={tintColor}
-            />
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    source={require('../../assets/img/navbar/account-icon.png')}
+                    style={{ width: width, height: height, tintColor: tintColor }}
+                />
             ),
             tabBarOptions: {
                 activeTintColor: '#49AD26',
+                style: styles.navbar,
             },
         })
     },
@@ -102,6 +102,20 @@ const NavigationStacks = createBottomTabNavigator({
 });
 
 
+const styles = StyleSheet.create({
+    navbar:{
+        height: 60,
+        backgroundColor: "white",
+        borderTopColor: "white",
+        shadowRadius: 2,
+        shadowOffset: {
+          width: 0,
+          height: -10,
+        },
+        shadowColor: '#000000',
+        elevation: 10,
+    }
+})
 export default createAppContainer(NavigationStacks);
 
 

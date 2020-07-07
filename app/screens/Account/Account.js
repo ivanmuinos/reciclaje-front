@@ -1,17 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image, Dimensions, AsyncStorage } from 'react-native';
 import { List, ListItem, FlatList, Avatar, Divider, Overlay } from 'react-native-elements';
 import ModalPointsLvl from './ModalPointsLvl';
 
 
+//firebase
+import { firebaseApp } from '../../utils/firebase';
+import firebase from "firebase/app";
+import { decode, encode } from 'base-64'
+if (!global.btoa) { global.btoa = encode }
+if (!global.atob) { global.atob = decode }
+import "firebase/firestore";
+
+const db = firebase.firestore(firebaseApp);
+//
+
 const dimensions = Dimensions.get('window');
-const overlayHeight = Math.round(dimensions.width * 24  / 16);
+const overlayHeight = Math.round(dimensions.width * 24 / 16);
 const overlayWidth = dimensions.width * 0.8;
 
 export default function Account(props) {
     const { navigation } = props;
 
     const [visible, setVisible] = useState(false);
+
+    const [user, setUser] = useState({});
+
+
+
+    useEffect(() => {
+
+        const navigationWillFocusListener = props.navigation.addListener('willFocus', () => {
+            getItem('user');
+        })
+        getItem('user');
+        return () => navigationWillFocusListener()
+
+
+    }, []);
+
+
 
     const toggleOverlay = () => {
         setVisible(!visible);
@@ -22,8 +50,8 @@ export default function Account(props) {
             <View style={styles.avatarView}>
                 <Text style={styles.welcome}>Hola {user.name}!</Text>
                 <Text>Te damos la bienvenida a Grow</Text>
-                
-                <Text style={{fontSize: 20, margin: 15, fontWeight: 'bold', color:"gray"}}>Nivel: Árbol</Text>
+
+                <Text style={{ fontSize: 20, margin: 15, fontWeight: 'bold', color: "gray" }}>Nivel: Árbol</Text>
                 <TouchableOpacity
                     style={styles.pointsContainer}
                     onPress={toggleOverlay}
@@ -32,15 +60,15 @@ export default function Account(props) {
                     <Text style={styles.points}>{user.points} Hojas</Text>
                 </TouchableOpacity>
 
-                <Overlay 
-                    isVisible={visible} 
+                <Overlay
+                    isVisible={visible}
                     onBackdropPress={toggleOverlay}
-                    overlayStyle={{width: overlayWidth, height: overlayHeight, backgroundColor: "#f2f2f2", borderRadius: 10}}
-                
+                    overlayStyle={{ width: overlayWidth, height: overlayHeight, backgroundColor: "#f2f2f2", borderRadius: 10 }}
+
                 >
-                    <ModalPointsLvl/>
+                    <ModalPointsLvl />
                 </Overlay>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color:"gray", margin: 10}} >Siguiente nivel: Bosque</Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: "gray", margin: 10 }} >Siguiente nivel: Bosque</Text>
             </View>
 
 
@@ -54,7 +82,7 @@ export default function Account(props) {
                                 leftIcon={{ name: item.icon }}
                                 bottomDivider
                                 chevron
-                                onPress={() => navigation.navigate(item.screen)}
+                                onPress={() => handleButtonList(item)}
                             />
                         </TouchableOpacity>
                     ))
@@ -63,7 +91,35 @@ export default function Account(props) {
         </View>
 
     )
+
+    function handleButtonList(item) {
+        AsyncStorage.removeItem('user');
+        navigation.navigate(item.screen);
+    }
+
+    async function getItem(key) {
+        const value = await AsyncStorage.getItem(key).then((userRef) => {
+            let user = JSON.parse(userRef);
+
+            let userQuery = db.collection("user");
+            let query = userQuery.where('email', '==', user.email)
+                .where('password', '==', user.password)
+                .get()
+                .then((snapshot) => {
+                    if (snapshot.empty) {
+                        Alert.alert("Usuario o contraseña incorrectos");
+                    } else {
+                        snapshot.forEach(doc => {
+                            setUser(doc.data());
+                        });
+                    }
+
+                })
+        });
+
+    }
 }
+
 
 
 function renderPoints(points) {
@@ -71,44 +127,30 @@ function renderPoints(points) {
         resizeMode="cover"
         style={{ width: 70, height: 70 }}
     />
-    );
-    if (points > 500 && points < 1000) return (<Image source={require('../../../assets/img/arbusto-icon.png')}
+    )
+    if (points >= 500 && points < 1000) return (<Image source={require('../../../assets/img/arbusto-icon.png')}
         resizeMode="cover"
         style={{ width: 70, height: 70 }}
     />
     );
-    if (points > 1000 && points < 2000) return (<Image source={require('../../../assets/img/arbol-icon.png')}
+    if (points >= 1000 && points < 2000) return (<Image source={require('../../../assets/img/arbol-icon.png')}
         resizeMode="cover"
         style={{ width: 70, height: 70 }}
     />
     );
-    if (points > 2000) return (<Image source={require('../../../assets/img/bosque-icon.png')}
+    if (points >= 2000) return (<Image source={require('../../../assets/img/bosque-icon.png')}
         resizeMode="cover"
         style={{ width: 70, height: 70 }}
     />
     );
 }
 
-const user = {
-    name: 'Julieta',
-    points: '1500'
 
-}
 
 const list = [
     {
         title: 'Datos del perfil',
         icon: 'settings',
-        screen: 'GreenPointUpload1',
-    },
-    {
-        title: 'Historial',
-        icon: 'sync',
-        screen: 'GreenPointUpload1',
-    },
-    {
-        title: 'Logros',
-        icon: 'school',
         screen: 'GreenPointUpload1',
     },
     {
@@ -120,6 +162,11 @@ const list = [
         title: 'Cargar Take Away',
         icon: 'store',
         screen: 'TakeAwayUpload1',
+    },
+    {
+        title: 'Cerrar sesion',
+        icon: 'store',
+        screen: 'Login'
     }
 ]
 

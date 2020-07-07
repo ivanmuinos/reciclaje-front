@@ -90,62 +90,18 @@ export default function Map() {
                 longitude: -58.48839172,
             }
         },
-
-
     ]
-
-
-    console.log(markers);
 
     return (
         <View>
-            <View style={styles.checkboxContainer}>
-                <View style={styles.containerFilterButtons}>
-                    <TouchableOpacity
-                        onPress={() => { setGreenPointCheck(!greenPointCheck) }}
-                        style={styles.filterButton}
-                    >
-                        {
-                            greenPointCheck ? <Image
-                                source={require('../../assets/img/button-checked-greenpoint.png')}
-                                style={{ width: 50, height: 50 }}
-                            /> : <Image
-                                    source={require('../../assets/img/button-unchecked-greenpoint.png')}
-                                    style={{ width: 50, height: 50 }}
-                                />
-                        }
-                    </TouchableOpacity>
-                    <Text>Puntos Verdes</Text>
-                </View>
-                <View style={styles.containerFilterButtons}>
-                    <TouchableOpacity
-                        style={styles.filterButton}
-                        onPress={() => { setTakeAwayCheck(!takeAwayCheck) }}
-                    >
-                          {
-                            takeAwayCheck ? <Image
-                                source={require('../../assets/img/button-checked-takeaway.png')}
-                                style={{ width: 50, height: 50 }}
-                            /> : <Image
-                                    source={require('../../assets/img/button-unchecked-takeaway.png')}
-                                    style={{ width: 50, height: 50 }}
-                                />
-                        }
-                    </TouchableOpacity>
-                    <Text>Take-Away</Text>
-                </View>
-
-            </View>
             <View>
                 <MapView
                     style={styles.mapStyle}
                     region={mapRegion}
                     provider={PROVIDER_GOOGLE}
                     showsUserLocation={true}
-                    zoomEnabled = {true}  
-                >   
-
-
+                    zoomEnabled={true}
+                >
                     {markers.filter(marker => marker.status === true).map((marker, i) => (
                         <Marker
                             coordinate={marker.latlng}
@@ -157,13 +113,46 @@ export default function Map() {
 
                         </Marker>
                     ))}
-
-
                 </MapView>
+                <View style={styles.checkboxContainer}>
+                    <View style={styles.containerFilterButtons}>
+                        <TouchableOpacity
+                            onPress={() => { setGreenPointCheck(!greenPointCheck) }}
+                            style={styles.filterButton}
+                        >
+                            {
+                                greenPointCheck ? <Image
+                                    source={require('../../assets/img/button-checked-greenpoint.png')}
+                                    style={{ width: 50, height: 50 }}
+                                /> : <Image
+                                        source={require('../../assets/img/button-unchecked-greenpoint.png')}
+                                        style={{ width: 50, height: 50 }}
+                                    />
+                            }
+                        </TouchableOpacity>
+                        <Text></Text>
+                    </View>
+                    <View style={styles.containerFilterButtons}>
+                        <TouchableOpacity
+                            style={styles.filterButton}
+                            onPress={() => { setTakeAwayCheck(!takeAwayCheck) }}
+                        >
+                            {
+                                takeAwayCheck ? <Image
+                                    source={require('../../assets/img/button-checked-takeaway.png')}
+                                    style={{ width: 50, height: 50 }}
+                                /> : <Image
+                                        source={require('../../assets/img/button-unchecked-takeaway.png')}
+                                        style={{ width: 50, height: 50 }}
+                                    />
+                            }
+                        </TouchableOpacity>
+                        <Text></Text>
+                    </View>
 
+                </View>
             </View>
         </View>
-
     );
 
     function checkGreenPoint() {
@@ -186,16 +175,18 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height,
     },
     checkboxContainer: {
-        flexDirection: 'row',
+        position: 'absolute',
+        flexDirection: 'column',
         backgroundColor: "white",
         margin: 10,
         padding: 10,
-        width: "55%",
+        height: "22%",
         borderRadius: 10,
         shadowOffset: {
             width: 0,
             height: 2,
         },
+        opacity: 0.9,
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 2,
@@ -203,6 +194,8 @@ const styles = StyleSheet.create({
     containerFilterButtons: {
         marginRight: 5,
         marginLeft: 5,
+        marginTop: 2,
+
         alignItems: "center",
         alignContent: "center",
         justifyContent: "center",

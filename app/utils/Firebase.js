@@ -1,14 +1,17 @@
 import firebase from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC6Gwoewi2okzNC6SmFH3LeJnsTVeueULg",
-    authDomain: "sistema-turnos-medicos.firebaseapp.com",
-    databaseURL: "https://sistema-turnos-medicos.firebaseio.com",
-    projectId: "sistema-turnos-medicos",
-    storageBucket: "sistema-turnos-medicos.appspot.com",
-    messagingSenderId: "854364808392",
-    appId: "1:854364808392:web:54ee0bcfbcb4b4174071fd"
-  };
+
+  apiKey: "AIzaSyCT4bP1xDv-y1mjxddJybBgRCNOT7UmilM",
+  authDomain: "reciclaje-faa5c.firebaseapp.com",
+  databaseURL: "https://reciclaje-faa5c.firebaseio.com",
+  projectId: "reciclaje-faa5c",
+  storageBucket: "reciclaje-faa5c.appspot.com",
+  messagingSenderId: "973077624854",
+  appId: "1:973077624854:web:352e609e0aca3d182d9d37",
+  measurementId: "G-K9SMF4HG2Y"
+  
+};
 
   export const firebaseApp = firebase.initializeApp(firebaseConfig);
 

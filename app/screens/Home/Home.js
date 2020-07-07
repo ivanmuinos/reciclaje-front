@@ -1,55 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native';
 import { Image, Icon, Card, Button, Overlay } from 'react-native-elements';
-
+import { FastImage, FastImageView } from 'react-native-fast-image'
 import { underline } from 'colorette';
 import { WebView } from "react-native-webview";
 
 const typeUser = "normalUse";
 
 const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 6.8  / 16);
+const imageHeight = Math.round(dimensions.width * 6.8 / 16);
 const imageWidth = dimensions.width * 0.4;
+
 
 export default function Home(props) {
     const { navigation } = props;
-
     return (
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.containerIcons}>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('Recycle', {})}}
+                        onPress={() => { navigation.navigate('Recycle', {}) }}
                         style={styles.button}
                     >
-                          <Image
+                        <Image
                             source={require('../../../assets/img/recycle-home-icon.png')}
                             style={{ width: 100, height: 100 }}
                         />
                         <Text style={styles.textButtonLearning}>Reciclaje en casa</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('GreenPoint', {})}}
+                        onPress={() => { navigation.navigate('GreenPoint', {}) }}
                         style={styles.button}
                     >
-                         <Image
+                        <Image
                             source={require('../../../assets/img/green-point-icon.png')}
                             style={{ width: 100, height: 100 }}
                         />
                         <Text style={styles.textButtonLearning}>Puntos Verdes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('Enviroment', {})}}
+                        onPress={() => { navigation.navigate('Enviroment', {}) }}
                         style={styles.button}
                     >
-                         <Image
+                        <Image
                             source={require('../../../assets/img/medio-ambiente-icon.jpeg')}
                             style={{ width: 100, height: 100 }}
                         />
                         <Text style={styles.textButtonLearning}>Medio Ambiente</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('PlasticReduction', {})}}
+                        onPress={() => { navigation.navigate('PlasticReduction', {}) }}
                         style={styles.button}
                     >
                         <Image
@@ -59,10 +59,10 @@ export default function Home(props) {
                         <Text style={styles.textButtonLearning}>Reducción de plástico</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => {navigation.navigate('RecycleProcess', {})}}
+                        onPress={() => { navigation.navigate('RecycleProcess', {}) }}
                         style={styles.button}
                     >
-                         <Image
+                        <Image
                             source={require('../../../assets/img/proceso-reciclado-icon.jpeg')}
                             style={{ width: 100, height: 100 }}
                         />
@@ -81,7 +81,14 @@ const user = {
 }
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        borderTopColor: "#f2f2f2",
+        borderRightColor: "white",
+        borderLeftColor: "white",
+        borderBottomColor: "white",
+        borderWidth: 2,
+
+    },
     containerIcons: {
         marginTop: 10,
         flex: 1,
@@ -111,7 +118,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: imageWidth,
-        height: imageHeight,
+        height: imageHeight * 0.84,
         backgroundColor: '#fff',
         shadowColor: "#000",
         shadowOffset: {

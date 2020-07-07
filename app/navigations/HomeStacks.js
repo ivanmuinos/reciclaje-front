@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Icon, Header } from 'react-native-elements';
+import { StyleSheet, TouchableOpacity, View, Text, AsyncStorage } from 'react-native';
+import { Icon, Header, Image } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
-
 
 import HomeScreen from "../screens/Home/Home";
 import LoginScreen from "../screens/Account/Login";
@@ -14,15 +13,23 @@ import GreenPointScreen from "../screens/Home/Learning/GreenPoint";
 import RecycleProcessScreen from "../screens/Home/Learning/RecycleProcess";
 import PlasticReduction from "../screens/Home/Learning/PlasticReduction";
 
+import RenderLeft from '../components/Header/RenderLeft';
+import RenderRight from '../components/Header/RenderRight';
+
 const HomeScreenStacks = createStackNavigator({
     Home: {
         screen: HomeScreen,
-        navigationOptions: () => ({
-            header: () => <Header 
-                                containerStyle={styles.headerContainer}
-                                centerComponent={{ text: '1500 Hojas', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
-                          />,
-        })
+        navigationOptions: ({navigation}) => ({
+            header: (navigation) => <Header
+                containerStyle={styles.headerContainer}
+                rightComponent={<RenderRight navigation={navigation}/>}
+                leftComponent={<RenderLeft navigation={navigation}/>}
+            />,
+            cardStyle: {
+                backgroundColor: "white",
+            }
+        }),
+
     },
     Recycle: {
         screen: RecycleScreen,
@@ -34,7 +41,7 @@ const HomeScreenStacks = createStackNavigator({
         screen: EnviromentScreen,
         navigationOptions: () => ({
             title: "Medio Ambiente"
-        }) 
+        })
     },
     GreenPoint: {
         screen: GreenPointScreen,
@@ -56,36 +63,62 @@ const HomeScreenStacks = createStackNavigator({
     },
 
 },
-{
-    initialRouteName: 'Home'
-}
+    {
+        initialRouteName: 'Home'
+    }
 
 );
 
-const renderAccountIcon = () => {
-    return (
-        <TouchableOpacity onPress={ () => {console.log('Boton mi cuenta presionado')}}>
-                <Icon
-                    type="material-community"
-                    name="account"
-                    size={22}
-                    color="#fff"
-                />
-        </TouchableOpacity>
-    )
+const renderLeft = () => {
+
+
 }
 
+const renderRight = () => {
+ 
+}
+
+
+
 const styles = StyleSheet.create({
-    headerContainer:{
-        shadowOffset: {
-            height: 1,
-            width: 1,
-        },
-        shadowOpacity: 0.5,
-        backgroundColor: "#49AD26"
-        
+    headerContainer: {
+        height: 80,
+        backgroundColor: "#A6CB12",
+    },
+    containerLeftHeader: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    img: {
+        borderRadius: 35,
+        borderWidth: 2,
+        padding: 12,
+        borderColor: "white",
+        backgroundColor: "white",
+    },
+    hello: {
+        marginTop: "15%",
+        fontWeight: "bold",
+        marginLeft: 10,
+        fontSize: 20,
+        color: "gray",
+    },
+    name: {
+        marginTop: "15%",
+        marginLeft: 5,
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#A6CB12",
+    },
+    points: {
+        alignContent: 'center',
+        alignItems: 'center',
+        borderRadius: 35,
+        padding: 10,
+        borderColor: "white",
+        marginRight: 20,
     }
-    
+
 })
 
 export default HomeScreenStacks;
