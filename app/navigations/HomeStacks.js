@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text, AsyncStorage } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Icon, Header, Image } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -83,7 +83,7 @@ const renderRight = () => {
 const styles = StyleSheet.create({
     headerContainer: {
         height: 80,
-        backgroundColor: "#A6CB12",
+        backgroundColor: "white",
     },
     containerLeftHeader: {
         flexDirection: 'row',

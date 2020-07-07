@@ -5,6 +5,7 @@ import { FastImage, FastImageView } from 'react-native-fast-image'
 import { underline } from 'colorette';
 import { WebView } from "react-native-webview";
 
+
 const typeUser = "normalUse";
 
 const dimensions = Dimensions.get('window');

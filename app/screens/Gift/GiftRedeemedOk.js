@@ -1,30 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default function GiftRedeemedOk({ navigation, route }) {
+
     const { name, description, points, image } = navigation.state.params;
-    const result = 1200 - points;
+
     return (
         <View>
-        <View style={styles.headerContainer}>
-            <Text style={styles.congrats}>¡Felicidades!</Text>
-            <View style={styles.imageContainer}>
-                <Image
-                    source={image}
-                    resizeMode="contain"
-                    style={styles.image}
-                />
+            <View style={styles.headerContainer}>
+                <Text style={styles.congrats}>¡Felicitaciones!</Text>
+                <View style={styles.imageContainer}>
+                    <Image
+                        source={image}
+                        resizeMode="contain"
+                        style={styles.image}
+                    />
+                </View>
+                <Text style={styles.descriptionOk}>Tu canje fue realizado correctamente!</Text>
             </View>
-            <Text style={styles.descriptionOk}>Tu canje fue realizado correctamente!</Text>
-        </View>
-        <View style={styles.container}>
-            
-            <Text style={{fontSize: 20}}>Detalle:</Text>
-            <Text style={{fontSize: 15, marginTop: 5, color: "gray" }}>{name}</Text>
-            <Text style={{fontSize: 15, marginTop: 5, color: "gray"}}>{description}</Text>
-        </View>
-            <Text style={{fontSize: 30, textAlign: "center", marginTop: 30}}>Te quedan: {result} hojas</Text>
+            <View style={styles.container}>
+
+                <Text style={{ fontSize: 20 }}>Detalle:</Text>
+                <Text style={{ fontSize: 15, marginTop: 5, color: "gray" }}>{name}</Text>
+                <Text style={{ fontSize: 15, marginTop: 5, color: "gray" }}>{description}</Text>
+            </View>
+
         </View>
     )
 }
@@ -32,7 +33,7 @@ export default function GiftRedeemedOk({ navigation, route }) {
 
 
 const styles = StyleSheet.create({
-    headerContainer:{
+    headerContainer: {
         marginTop: 15,
     },
     container: {
@@ -50,22 +51,27 @@ const styles = StyleSheet.create({
 
         elevation: 4,
     },
-    congrats:{
+    congrats: {
         fontSize: 50,
         textAlign: "center",
-        color: "#49AD26"
+        color: "#A6CB12",
+        fontWeight: "bold",
     },
-    imageContainer:{
+    imageContainer: {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
         padding: 25,
     },
-    descriptionOk:{
+    descriptionOk: {
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
         marginTop: 5,
         color: "black",
+    },
+    image: {
+        width: "100%",
+        height: 120
     }
 })

@@ -38,7 +38,7 @@ export default function RenderRight(props) {
                     source={require('../../../assets/img/leaf-icon.png')}
                     style={{ width: 30, height: 30 }}
                 />
-                <Text style={{ fontSize: 16, fontWeight: "bold", color: "#f2f2f2" }}>{user.points}</Text>
+                <Text style={{ fontSize: 16, fontWeight: "bold", color: "#A6CB12" }}>{user.points}</Text>
             </View>
         </View>
 
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         fontSize: 20,
         fontWeight: "bold",
-        color: "white",
+        color: "#A6CB12",
     },
     points: {
         alignContent: 'center',

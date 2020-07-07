@@ -40,8 +40,7 @@ export default function RenderLeft(props) {
             </View>
             <View >
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.hello}>Hola</Text>
-                    <Text style={styles.name}>{user.name}!</Text>
+                    <Text style={styles.name}>GrowApp!</Text>
                 </View>
             </View>
         </View>
@@ -104,6 +103,7 @@ const styles = StyleSheet.create({
     containerLeftHeader: {
         flexDirection: 'row',
         marginBottom: 20,
+        width: 100,
     },
     img: {
         borderRadius: 35,
@@ -112,27 +112,12 @@ const styles = StyleSheet.create({
         borderColor: "white",
         backgroundColor: "#E8FFCD",
     },
-    hello: {
-        marginTop: "15%",
-        fontWeight: "bold",
-        marginLeft: 10,
-        fontSize: 20,
-        color: "gray",
-    },
     name: {
         marginTop: "15%",
         marginLeft: 5,
         fontSize: 20,
         fontWeight: "bold",
-        color: "white",
+        color: "#A6CB12",
     },
-    points: {
-        alignContent: 'center',
-        alignItems: 'center',
-        borderRadius: 35,
-        padding: 10,
-        borderColor: "white",
-        marginRight: 20,
-    }
 
 })

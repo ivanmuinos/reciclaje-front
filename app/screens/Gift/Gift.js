@@ -8,17 +8,9 @@ export default function Gift(props) {
     const { navigation } = props;
     const [search, updateSearch] = useState("");
     
+    
     return (
-
         <ScrollView>
-            <SearchBar
-                placeholder="Buscar..."
-                value={search}
-                containerStyle={styles.searchContainer}
-                inputContainerStyle={styles.inputContainerStyle}
-                inputStyle={styles.inputStyle}
-            />
-
             <View style={styles.view}>
                 {
                     detail.map((det, i) => {

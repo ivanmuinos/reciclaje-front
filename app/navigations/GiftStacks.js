@@ -1,34 +1,46 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { Icon, Header, Image } from 'react-native-elements';
+
 import { createStackNavigator } from 'react-navigation-stack';
-import {  Icon, Header } from 'react-native-elements';
 import { StyleSheet,TouchableOpacity } from 'react-native';
 import GiftScreen from '../screens/Gift/Gift';
 import GiftDetail from '../screens/Gift/GiftDetail';
 import GiftRedeemedOk from '../screens/Gift/GiftRedeemedOk';
+
+import RenderLeft from '../components/Header/RenderLeft';
+import RenderRight from '../components/Header/RenderRight';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const GiftScreenStacks = createStackNavigator({
     Gift: {
         screen: GiftScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: () => <Header 
-                                containerStyle={styles.headerContainer}
-                                centerComponent={{ text: '1500 Hojas', style: { color: '#fff', fontWeight: "bold", fontSize: 17 } }}
-                          />,
+        navigationOptions: ({navigation}) => ({
+            header: (navigation) => <Header
+                containerStyle={styles.headerContainer}
+                rightComponent={<RenderRight navigation={navigation}/>}
+                leftComponent={<RenderLeft navigation={navigation}/>}
+            />,
+            cardStyle: {
+                backgroundColor: "white",
+            }
         })
         
     },
     GiftDetail: {
         screen: GiftDetail,
         navigationOptions: () => ({
-            title: "Detalle"
+            title: "Detalle",
         })
     },
     GiftRedeemedOk: {
         screen: GiftRedeemedOk,
         navigationOptions: () => ({
-            title: "Canje exitoso"
+            title: "Canje exitoso",
+            cardStyle: {
+                backgroundColor: "white",
+            }
         })
      }
 });
@@ -48,16 +60,15 @@ const renderMenuIcon = (navigation) => {
 }
 
 const styles = StyleSheet.create({
-    headerContainer:{
-        shadowOffset: {
-            height: 1,
-            width: 1,
-        },
-        shadowOpacity: 0.5,
-        backgroundColor: "#49AD26"
-        
-    }
-    
+    headerContainer: {
+        height: 80,
+        backgroundColor: "white",
+    },
+    containerLeftHeader: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+
 })
 
 export default GiftScreenStacks;

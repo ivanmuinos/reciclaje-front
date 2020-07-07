@@ -51,7 +51,7 @@ export default function Account(props) {
                 <Text style={styles.welcome}>Hola {user.name}!</Text>
                 <Text>Te damos la bienvenida a Grow</Text>
 
-                <Text style={{ fontSize: 20, margin: 15, fontWeight: 'bold', color: "gray" }}>Nivel: Árbol</Text>
+                <Text style={{ fontSize: 20, margin: 15, fontWeight: 'bold', color: "gray" }}>Nivel: {renderNameByPoints(user.points)}</Text>
                 <TouchableOpacity
                     style={styles.pointsContainer}
                     onPress={toggleOverlay}
@@ -68,7 +68,7 @@ export default function Account(props) {
                 >
                     <ModalPointsLvl />
                 </Overlay>
-                <Text style={{ fontSize: 15, fontWeight: 'bold', color: "gray", margin: 10 }} >Siguiente nivel: Bosque</Text>
+                {renderNextLvl(user.points)}
             </View>
 
 
@@ -83,6 +83,7 @@ export default function Account(props) {
                                 bottomDivider
                                 chevron
                                 onPress={() => handleButtonList(item)}
+                                containerStyle={styles.listItem}
                             />
                         </TouchableOpacity>
                     ))
@@ -100,7 +101,6 @@ export default function Account(props) {
     async function getItem(key) {
         const value = await AsyncStorage.getItem(key).then((userRef) => {
             let user = JSON.parse(userRef);
-
             let userQuery = db.collection("user");
             let query = userQuery.where('email', '==', user.email)
                 .where('password', '==', user.password)
@@ -120,8 +120,18 @@ export default function Account(props) {
     }
 }
 
-
-
+function renderNextLvl(points) {
+    if (points < 500) return (<Text style={styles.nextlvl}>Siguiente nivel: Arbusto</Text>)
+    if (points >= 500 && points < 1000) return (<Text style={styles.nextlvl}>Siguiente nivel: Árbol</Text>)
+    if (points >= 1000 && points < 2000) return (<Text style={styles.nextlvl}>Siguiente nivel: Bosque</Text>)
+    if (points >= 2000) return (<Text style={styles.nextlvl}></Text>)
+}
+function renderNameByPoints(points) {
+    if (points < 500) return (<Text>Brote</Text>)
+    if (points >= 500 && points < 1000) return (<Text>Arbusto</Text>)
+    if (points >= 1000 && points < 2000) return (<Text>Árbol</Text>)
+    if (points >= 2000) return (<Text>Bosque</Text>)
+}
 function renderPoints(points) {
     if (points < 500) return (<Image source={require('../../../assets/img/brote-icon.png')}
         resizeMode="cover"
@@ -154,16 +164,6 @@ const list = [
         screen: 'GreenPointUpload1',
     },
     {
-        title: 'Cargar Punto Verde',
-        icon: 'room',
-        screen: 'GreenPointUpload1',
-    },
-    {
-        title: 'Cargar Take Away',
-        icon: 'store',
-        screen: 'TakeAwayUpload1',
-    },
-    {
         title: 'Cerrar sesion',
         icon: 'store',
         screen: 'Login'
@@ -178,9 +178,11 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         padding: 10,
         borderRadius: 100,
-        height: 150,
-        width: 150,
+        height: 170,
+        width: 170,
         marginBottom: 10,
+        borderWidth: 1,
+        borderColor: "#f5f5f5",
         shadowOffset: {
             width: 0,
             height: 1,
@@ -194,6 +196,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginTop: 20,
         textAlign: "center",
+        color: "#A6CB12",
+        fontWeight: "bold",
     },
     points: {
         marginBottom: 15,
@@ -207,18 +211,30 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: 'center',
         backgroundColor: "white",
-
-
-
     },
     avatar: {
         marginTop: 15,
         marginBottom: 15,
-
     },
     list: {
         margin: 15,
         marginTop: 20,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+
+    },
+    nextlvl: {
+        fontSize: 15, fontWeight: 'bold', color: "gray", margin: 10
+    },
+    listItem: {
+        backgroundColor: "#f5f5f5",
+        marginTop: 10,
+        borderRadius: 10,
         shadowOffset: {
             width: 0,
             height: 2,
