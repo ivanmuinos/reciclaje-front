@@ -67,7 +67,7 @@ const detail = [
         name: 'Termo ECO',
         description: 'Ejemplo de descripción del producto',
         points: '2300',
-        image: require('../../../assets/img/08-premios-termomadera.jpg'),
+        image: require('../../../assets/img/08-premios-termomadera.jpeg'),
     },
     {
         name: 'Botella grande',
@@ -83,7 +83,7 @@ const detail = [
     },
     {
         name: 'Vaso térmico madera Eco',
-        description: 'Ejemplo de descripción del producto',
+        description: 'Excelente vaso térmico de madera. Muy útil para utilizar en los take-away y seguir sumando puntos!. Capacidad 1L.',
         points: '1500',
         image: require('../../../assets/img/09-premios-vasotermicomadera.jpg'),
     },

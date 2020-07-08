@@ -109,9 +109,10 @@ export default function QR(props) {
                 Alert.alert("Usuario o contraseña incorrectos");
             } else {
                 snapshot.forEach(doc => {
-                    db.collection("user").doc(doc.id).update({ points: 2500 });
+                    let result = parseInt(doc.data().points) + 500
+                    db.collection("user").doc(doc.id).update({ points: result });
                     navigation.navigate(data, {
-                      points: 2500
+                      points: 500
                     });
                     setLoading(false);
                 });

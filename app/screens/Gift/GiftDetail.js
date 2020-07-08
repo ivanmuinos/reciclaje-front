@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 5,
-        fontSize: 35,
+        fontSize: 30,
     },
     points: {
         fontSize: 20,
